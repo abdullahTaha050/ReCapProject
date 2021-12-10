@@ -10,23 +10,47 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //CarAddTest();
+
+            GetCarsByBrandIdTest();
+
             CarManager carManager = new CarManager(new EfCarDal());
             
-            //Car car1 = new Car { 
-            //    Id = 1,
-            //    BrandId = 1,
-            //    ColorId = 2,
-            //    DailyPrice = 100,
-            //    Description = "Dizel Otomatik C Segmenti Araç",
-            //    ModelYear = "2021",
-            //    Name = "Renault Clio"
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + " / "+ car.BrandName + " / "+ car.ColorName + " / "+ car.DailyPrice);
+            }
 
-            //};
-            //carManager.Add(car1);
+        }
+
+        private static void GetCarsByBrandIdTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarsByBrandId(1))
+            {
+                Console.WriteLine(car.CarName);
+            }
+        }
+
+        private static void CarAddTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            Car car2 = new Car { 
+                Id = 2,
+                BrandId = 2,
+                ColorId = 1,
+                DailyPrice = 150,
+                Description = "Benzinli Manuel 1.2",
+                ModelYear = "2020",
+                CarName = "Volkswagen Polo"
+
+            };
+            carManager.Add(car2);
 
             foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(car.Name);
+                Console.WriteLine(car.CarName);
             }
         }
     }
