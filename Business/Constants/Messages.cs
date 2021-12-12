@@ -12,6 +12,7 @@ namespace Business.Constants
         public static string Deleted = "Silme işlemi başarılı";
         public static string CarAdded = "Araç başarıyla eklendi.";
         public static string InvalidCarDetail = "Araç ismi 2 karakterden uzun olmalı ve günlük bedeli 0'dan büyük olmalıdır.";
+        public static string InvalidCustomerName = "Şirket adı 2 karakterden uzun olmalıdır.";
         public static string CarsListed = "Araçlar listelendi";
         public static string MaintenanceTime = "Sistem bakımda";
     }

@@ -10,47 +10,37 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //CarAddTest();
+            //GetAllCarsTest();
 
-            GetCarsByBrandIdTest();
+            //AddCustomerTest();
 
-            CarManager carManager = new CarManager(new EfCarDal());
-            
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.CarName + " / "+ car.BrandName + " / "+ car.ColorName + " / "+ car.DailyPrice);
-            }
-
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental1 = new Rental {CarId=1, CustomerId=2, RentDate= DateTime.Today};
+            var result =  rentalManager.Add(rental1);
+            Console.WriteLine(result.Success);
         }
 
-        private static void GetCarsByBrandIdTest()
+        private static void AddCustomerTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarsByBrandId(1))
-            {
-                Console.WriteLine(car.CarName);
-            }
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            Customer customer1 = new Customer { UserId = 2, CompanyName = "Doğuş Otomotiv" };
+
+            var result = customerManager.Add(customer1);
+
+            Console.WriteLine(result.Success);
         }
 
-        private static void CarAddTest()
+        private static void GetAllCarsTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-
-            Car car2 = new Car { 
-                Id = 2,
-                BrandId = 2,
-                ColorId = 1,
-                DailyPrice = 150,
-                Description = "Benzinli Manuel 1.2",
-                ModelYear = "2020",
-                CarName = "Volkswagen Polo"
-
-            };
-            carManager.Add(car2);
-
-            foreach (var car in carManager.GetAll())
+            var result = carManager.GetCarDetails();
+            if (result.Success)
             {
-                Console.WriteLine(car.CarName);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice);
+                }
             }
         }
     }
