@@ -31,7 +31,7 @@ namespace Business.Concrete
 
         public IResult Delete(Customer customer)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }
@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Customer>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorDataResult<List<Customer>>(Messages.MaintenanceTime);
             }
@@ -52,7 +52,7 @@ namespace Business.Concrete
 
         public IDataResult<Customer> GetCustomersByCustomerId(int id)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorDataResult<Customer>(Messages.MaintenanceTime);
             }
@@ -62,7 +62,7 @@ namespace Business.Concrete
 
         public IResult Update(Customer customer)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorResult(Messages.MaintenanceTime);
             }

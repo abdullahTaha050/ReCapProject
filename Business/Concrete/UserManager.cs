@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
             }
@@ -52,7 +52,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetById(int id)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorDataResult<User>(Messages.MaintenanceTime);
             }
